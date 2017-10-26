@@ -18,4 +18,9 @@ public class Game {
             scoretwo++;
         }
     }
+
+    public String getResults() {
+        // TODO
+        return "result";
+    }
 }
