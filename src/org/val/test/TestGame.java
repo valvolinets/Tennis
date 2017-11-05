@@ -31,6 +31,8 @@ public class TestGame {
         }
         assertEquals(this.expectedScore, game.getResults());
     }
+
+    // TODO parameters?
     
     @Test
     public void checkResults() {
