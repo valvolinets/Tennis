@@ -13,8 +13,8 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class TestGame {
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
+    private int playerOneScore;
+    private int playerTwoScore;
     private String expectedScore;
 
     public TestGame(int playerOneScore, int playerTwoScore, String expectedScore) {
@@ -24,9 +24,11 @@ public class TestGame {
     }
 
     public void getGameResult(Game game) {
-        int highestScore = 3;
+        int highestScore = Math.max(this.playerOneScore, this.playerTwoScore);
         for(int i = 0; i < highestScore; i++) {
+            if(i < this.playerOneScore)
             game.whoScores("playerOne");
+            if (i < this.playerTwoScore)
             game.whoScores("playerTwo");
         }
         assertEquals(this.expectedScore, game.getResults());
@@ -48,32 +50,32 @@ public class TestGame {
                 { 0, 2, "Love-Thirty"},
                 { 3, 0, "Forty-Love"},
                 { 0, 3, "Love-Forty"},
-                { 4, 0, "Win for player1"},
-                { 0, 4, "Win for player2"},
+                { 4, 0, "Player 1 Wins"},
+                { 0, 4, "Player 2 Wins"},
 
                 { 2, 1, "Thirty-Fifteen"},
                 { 1, 2, "Fifteen-Thirty"},
                 { 3, 1, "Forty-Fifteen"},
                 { 1, 3, "Fifteen-Forty"},
-                { 4, 1, "Win for player1"},
-                { 1, 4, "Win for player2"},
+                { 4, 1, "Player 1 Wins"},
+                { 1, 4, "Player 2 Wins"},
 
                 { 3, 2, "Forty-Thirty"},
                 { 2, 3, "Thirty-Forty"},
-                { 4, 2, "Win for player1"},
-                { 2, 4, "Win for player2"},
+                { 4, 2, "Player 1 Wins"},
+                { 2, 4, "Player 2 Wins"},
 
-                { 4, 3, "Advantage player1"},
-                { 3, 4, "Advantage player2"},
-                { 5, 4, "Advantage player1"},
-                { 4, 5, "Advantage player2"},
-                { 15, 14, "Advantage player1"},
-                { 14, 15, "Advantage player2"},
+                { 4, 3, "Player 1 Advantage"},
+                { 3, 4, "Player 2 Advantage"},
+                { 5, 4, "Player 1 Advantage"},
+                { 4, 5, "Player 2 Advantage"},
+                { 15, 14, "Player 1 Advantage"},
+                { 14, 15, "Player 2 Advantage"},
 
-                { 6, 4, "Win for player1"},
-                { 4, 6, "Win for player2"},
-                { 16, 14, "Win for player1"},
-                { 14, 16, "Win for player2"},
+                { 6, 4, "Player 1 Wins"},
+                { 4, 6, "Player 2 Wins"},
+                { 16, 14, "Player 1 Wins"},
+                { 14, 16, "Player 2 Wins"},
         });
     }
     

@@ -3,8 +3,8 @@ package org.val.local;
 public class Game {
     private String playerOne;
     private String playerTwo;
-    private int scoreOne;
-    private int scoreTwo;
+    private int scoreOne = 0;
+    private int scoreTwo = 0;
 
     public Game(String playerOne, String playerTwo) {
         this.playerOne = playerOne;
@@ -13,15 +13,15 @@ public class Game {
 
     public void whoScores(String name) {
         if (name == playerOne) {
-            scoreOne += 1;
+            scoreOne +=1;
         } else {
-            scoreTwo += 1;
+            scoreTwo +=1;
         }
     }
 
     public String getResults() {
 
-        String score = null;
+        String score = "";
         int tmp = 0;
         if(scoreOne == scoreTwo) {
             // Draw
@@ -35,8 +35,8 @@ public class Game {
                 case 2:
                     score = "Thirty-All";
                     break;
-                case 3:
-                    score = "Forty-All";
+                default:
+                    score = "Deuce";
                     break;
 
             }
@@ -54,21 +54,21 @@ public class Game {
             }
 
         } else {
-            for (int i = 0; i < 3; i++){
+            for (int i = 1; i < 3; i++){
             if(i == 1) tmp = scoreOne;
-            else {tmp = scoreTwo;}
+            else { score+="-"; tmp = scoreTwo;}
             switch (tmp) {
                 case 0:
-                    score += "Love";
+                    score+="Love";
                     break;
                 case 1:
-                    score += "Fifteen";
+                    score+="Fifteen";
                     break;
                 case 2:
-                    score += "Thirty";
+                    score+="Thirty";
                     break;
                 case 3:
-                    score += "Forty";
+                    score+="Forty";
                     break;
             }
         }
